@@ -8,11 +8,13 @@ import { Home } from './pages/Home';
 import { ProductList } from './pages/ProductList';
 import { ProductDetail } from './pages/ProductDetail';
 import { Cart } from './pages/Cart';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-geek-dark text-white font-sans antialiased selection:bg-geek-purple selection:text-white">
           <Navbar />
           <main className="flex-grow">
