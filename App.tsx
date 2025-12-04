@@ -9,6 +9,7 @@ import { Home } from './pages/Home';
 import { ProductList } from './pages/ProductList';
 import { ProductDetail } from './pages/ProductDetail';
 import { Cart } from './pages/Cart';
+import { Contact } from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
               <Route path="/products" element={<ProductList />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/contact" element={<Contact />} />
               {/* Fallback routes */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

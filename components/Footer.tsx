@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Cpu, Github, Twitter, Instagram } from 'lucide-react';
 
 export const Footer = () => {
@@ -20,18 +21,18 @@ export const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wider">Loja</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-geek-purple transition-colors">Lançamentos</a></li>
-              <li><a href="#" className="hover:text-geek-purple transition-colors">Mais Vendidos</a></li>
-              <li><a href="#" className="hover:text-geek-purple transition-colors">Ofertas</a></li>
+              <li><Link to="/products?sort=newest" className="hover:text-geek-purple transition-colors">Lançamentos</Link></li>
+              <li><Link to="/products?sort=relevance" className="hover:text-geek-purple transition-colors">Mais Vendidos</Link></li>
+              <li><Link to="/products" className="hover:text-geek-purple transition-colors">Ofertas</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-bold mb-4 uppercase text-sm tracking-wider">Suporte</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-geek-purple transition-colors">Rastreamento</a></li>
-              <li><a href="#" className="hover:text-geek-purple transition-colors">Trocas e Devoluções</a></li>
-              <li><a href="#" className="hover:text-geek-purple transition-colors">FAQ</a></li>
+              <li><Link to="/contact" className="hover:text-geek-purple transition-colors">Rastreamento</Link></li>
+              <li><Link to="/contact" className="hover:text-geek-purple transition-colors">Trocas e Devoluções</Link></li>
+              <li><Link to="/contact" className="hover:text-geek-purple transition-colors">Fale Conosco / FAQ</Link></li>
             </ul>
           </div>
 
