@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/Navbar';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -15,6 +16,33 @@ function App() {
     <CartProvider>
       <Router>
         <ScrollToTop />
+        <Toaster 
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: '#111',
+              color: '#fff',
+              border: '1px solid #333',
+              borderRadius: '8px',
+              padding: '12px',
+              fontSize: '14px',
+            },
+            success: {
+              iconTheme: {
+                primary: '#06D6A0',
+                secondary: '#000',
+              },
+              style: {
+                border: '1px solid #06D6A0',
+              }
+            },
+            error: {
+              style: {
+                border: '1px solid #ef4444',
+              }
+            }
+          }}
+        />
         <div className="flex flex-col min-h-screen bg-geek-dark text-white font-sans antialiased selection:bg-geek-purple selection:text-white">
           <Navbar />
           <main className="flex-grow">

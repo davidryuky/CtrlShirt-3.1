@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { CartItem, Product } from '../types';
+import toast from 'react-hot-toast';
 
 interface CartContextType {
   items: CartItem[];
@@ -39,20 +40,35 @@ export const CartProvider = ({ children }: { children?: ReactNode }) => {
   const addToCart = (product: Product, size: string, quantity: number) => {
     setItems(prev => {
       const existing = prev.find(item => item.id === product.id && item.selectedSize === size);
+      
       if (existing) {
+        // Just update quantity
+        toast.success(`Quantidade atualizada: ${product.name}`);
         return prev.map(item => 
           (item.id === product.id && item.selectedSize === size)
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
+      
+      // Add new item
+      toast.success(
+        <div className="flex flex-col">
+          <span className="font-bold">Adicionado ao Loot!</span>
+          <span className="text-xs text-gray-300">{product.name} (Tam: {size})</span>
+        </div>
+      );
+      
       return [...prev, { ...product, selectedSize: size, quantity }];
     });
-    // Trigger a small vibration on mobile or sound could be here
+    
+    // Optional: Vibrate on mobile if supported
+    if (navigator.vibrate) navigator.vibrate(50);
   };
 
   const removeFromCart = (productId: number, size: string) => {
     setItems(prev => prev.filter(item => !(item.id === productId && item.selectedSize === size)));
+    toast.error("Item removido", { icon: '🗑️' });
   };
 
   const updateQuantity = (productId: number, size: string, quantity: number) => {
